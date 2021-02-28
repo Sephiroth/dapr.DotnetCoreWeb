@@ -1,0 +1,17 @@
+version: '3'
+networks:
+  mynet:
+    external: true
+services:
+  dapr.dotnetcoreweb:
+    build: .
+    image: dapr.dotnetcoreweb
+    container_name: dapr.dotnetcoreweb
+    networks:
+      - mynet
+    volumes:
+      - "/home/lut/dotnetdemo:/app"
+      - "/home/logs/dapr.dotnetcoreweb:/app/logs"
+    restart: always
+    ports: 
+      - "10080:80"
